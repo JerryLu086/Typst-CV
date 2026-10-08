@@ -124,3 +124,10 @@
   ]
 ]
 #v(1.5em)
+
+#align(center)[
+  #let url = "https://github.com/JerryLu086/Typst-CV"
+  #text(size: 8pt)[
+    Made with Typst: #link(url)[#underline(stroke: linkRGB)[#text(fill: linkRGB, weight: "bold")[#url]]]
+  ]
+]
