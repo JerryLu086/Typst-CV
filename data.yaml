@@ -1,0 +1,12 @@
+name: "John MC Mod"
+email: "john.mcmod@gmail.com"
+phone: "0919198100"
+dep: "Yaju Engineering"
+skills:
+  - "Proficient":
+      - "Java"
+  - "Experienced":
+      - "JavaScript"
+  - "Familiar":
+      - "Lua"
+      - "C++"
