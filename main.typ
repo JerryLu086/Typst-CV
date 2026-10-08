@@ -17,6 +17,16 @@
   ),
 )
 
+#let makeTitle(name) = {
+  text(
+    fill: rgb("#1430A0"),
+    weight: "bold",
+    tracking: 1.5pt,
+    size: 9pt,
+  )[#name]
+  v(1.5em)
+}
+
 #align(left)[
   #set par(leading: 1.25em)
   #text(size: 30pt, fill: rgb("#1430A0"))[#data.name] \
@@ -42,18 +52,12 @@
 ]
 #v(1.5em)
 
-
 #text[
 
 ]
 #v(1.5em)
 
-#text(
-  fill: rgb("#1430A0"),
-  weight: "bold",
-  tracking: 1.5pt,
-  size: 9pt,
-)[SKILLS]
+#makeTitle("SKILLS")
 
 #table(
   columns: (auto, auto),
@@ -72,19 +76,25 @@
 )
 #v(1.5em)
 
-#text(
-  fill: rgb("#1430A0"),
-  weight: "bold",
-  tracking: 1.5pt,
-  size: 9pt,
-)[EXPERIENCE]
-#v(1.5em)
+#makeTitle("EXPERIENCE")
 
 #align(left)[
   #for (title, desc) in data.experience.pairs() [
     #text(size: 11pt, weight: "bold", fill: rgb("#2D7CAD"))[#title] \
     #v(0.3em)
     #text(size: 10pt)[#desc]
+    #v(1em)
+  ]
+]
+#v(1.5em)
+
+#makeTitle("PLAN")
+
+#align(left)[
+  #for (title, desc) in data.plan.pairs() [
+    #text(size: 11pt, weight: "bold", fill: rgb("#2D7CAD"))[#title] \
+    #v(0.3em)
+    #list(..desc)
     #v(1em)
   ]
 ]
