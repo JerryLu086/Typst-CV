@@ -101,29 +101,37 @@
 )
 #v(1.5em)
 
-#makeTitle("EXPERIENCE")
+#block(breakable: false)[
 
-#align(left)[
-  #for (title, desc) in data.experience.pairs() [
-    #text(size: 11pt, weight: "bold", fill: rgb("#2D7CAD"))[#title] \
-    #v(0.3em)
-    #text(size: 10pt)[#desc]
-    #v(1em)
+  #makeTitle("EXPERIENCE")
+
+  #align(left)[
+    #for (title, desc) in data.experience.pairs() [
+      #text(size: 11pt, weight: "bold", fill: rgb("#2D7CAD"))[#title] \
+      #v(0.3em)
+      #text(size: 10pt)[#desc]
+      #v(1em)
+    ]
   ]
+  #v(1.5em)
+
 ]
-#v(1.5em)
 
-#makeTitle("LEARNING PLAN")
+#block(breakable: false)[
 
-#align(left)[
-  #for (title, desc) in data.plan.pairs() [
-    #text(size: 11pt, weight: "bold", fill: rgb("#2D7CAD"))[#title] \
-    #v(0.3em)
-    #list(..desc)
-    #v(1em)
+  #makeTitle("LEARNING PLAN")
+
+  #align(left)[
+    #for (title, desc) in data.plan.pairs() [
+      #text(size: 11pt, weight: "bold", fill: rgb("#2D7CAD"))[#title] \
+      #v(0.3em)
+      #list(..desc)
+      #v(1em)
+    ]
   ]
+  #v(1.5em)
+
 ]
-#v(1.5em)
 
 #align(center)[
   #let url = "https://github.com/JerryLu086/Typst-CV"
@@ -131,3 +139,4 @@
     Made with Typst: #link(url)[#underline(stroke: linkRGB)[#text(fill: linkRGB, weight: "bold")[#url]]]
   ]
 ]
+
