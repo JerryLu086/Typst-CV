@@ -2,11 +2,24 @@ name: "John MC Mod"
 email: "john.mcmod@gmail.com"
 phone: "0919198100"
 dep: "Yaju Engineering"
+
 skills:
   - "Proficient":
-      - "Java"
+      colors:
+        - "#C1D6F2"
+        - "#1D3557"
+      items:
+        - "Java"
   - "Experienced":
-      - "JavaScript"
+      colors:
+        - "#DEE9F4"
+        - "#1D3557"
+      items:
+        - "JavaScript"
   - "Familiar":
-      - "Lua"
-      - "C++"
+      colors:
+        - "#EFF4FC"
+        - "#1D3557"
+      items:
+        - "Lua"
+        - "C++"

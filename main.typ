@@ -2,20 +2,20 @@
 
 #let data = yaml("data.yml")
 
-#let button(name) = box(
-  fill: rgb("#E5E5E5"),
+#let button(name, b, t) = box(
+  fill: rgb(b),
   radius: 10pt,
   inset: (x: 10pt, y: 8pt),
   text(
     name,
     weight: "bold",
-    fill: rgb("#7F7F7F"),
+    fill: rgb(t),
     size: 10pt,
   )
 )
 
 #text(
-  fill: rgb("#56AAFF"),
+  fill: rgb("#1430A0"),
   weight: "bold",
   tracking: 1.5pt,
   size: 9pt
@@ -27,11 +27,13 @@
   column-gutter: 20pt,
   // align: top + left,
   align: (col, row) => (left + horizon),
-  ..data.skills.map(items => {
-    let (level, skill) = items.pairs().first()
+  ..data.skills.map(map => {
+    let (level, config) = map.pairs().first()
+    let skill = config.items
+    let colors = config.colors
     (
       text(weight: "bold", fill: rgb("#000000"), size: 11pt)[#level],
-      skill.map(s => button(s)).join(h(10pt)),
+      skill.map(s => button(s, colors.at(0), colors.at(1))).join(h(10pt)),
     )
   }).flatten()
 )
