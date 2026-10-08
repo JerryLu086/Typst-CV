@@ -1,0 +1,1 @@
+So I made this for personal use, but guess it can also be reused if you want? Might as well wait for me to update a bit more for it to be more usable though.

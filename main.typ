@@ -70,3 +70,22 @@
     )
   }).flatten(),
 )
+#v(1.5em)
+
+#text(
+  fill: rgb("#1430A0"),
+  weight: "bold",
+  tracking: 1.5pt,
+  size: 9pt,
+)[EXPERIENCE]
+#v(1.5em)
+
+#align(left)[
+  #for (title, desc) in data.experience.pairs() [
+    #text(size: 11pt, weight: "bold", fill: rgb("#2D7CAD"))[#title] \
+    #v(0.3em)
+    #text(size: 10pt)[#desc]
+    #v(1em)
+  ]
+]
+#v(1.5em)
