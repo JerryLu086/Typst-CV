@@ -1,7 +1,12 @@
 name: "John MC Mod"
-email: "john.mcmod@gmail.com"
-phone: "0919198100"
 dep: "Yaju Engineering"
+
+contact:
+  "0919-198-100":
+  "john.mcmod@gmail.com": "mailto:john.mcmod@gmail.com"
+  "GitHub": "https://github.com/JohnMCMod"
+  "CurseForge": "https://www.curseforge.com/members/johnmcmod"
+  "Modrinth": "https://modrinth.com/user/JohnMCMod"
 
 skills:
   - "Proficient":
