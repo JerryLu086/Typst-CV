@@ -1,5 +1,6 @@
 #set text(font: "Noto Sans CJK TC")
 
+#let data = yaml("data-alt.yml")
 #let data = yaml("data.yml")
 
 // Stolen link color straight from official Typst wiki.
@@ -52,9 +53,33 @@
 ]
 #v(1.5em)
 
-#text[
+// #makeTitle("HIGHLIGHTS")
 
-]
+#grid(
+  columns: (1fr, 9fr),
+  ..data.highlights.enumerate().map(((i, desc)) => (
+    box(
+      inset: (y: 15pt),
+      width: 100%,
+      text(
+        fill: rgb("#2D7CAD"),
+        weight: "bold",
+        size: 11pt,
+        if i < 9 { "0" + str(i + 1) } else { str(i + 1) }
+      )
+    ),
+    box(
+      inset: (y: 15pt),
+      stroke: (bottom: 0.5pt + rgb("#7F7F7F")),
+      width: 100%,
+      text(
+        size: 10pt,
+        fill: rgb("#1D3557"),
+        desc
+      )
+    )
+  )).flatten()
+)
 #v(1.5em)
 
 #makeTitle("SKILLS")
@@ -88,7 +113,7 @@
 ]
 #v(1.5em)
 
-#makeTitle("PLAN")
+#makeTitle("LEARNING PLAN")
 
 #align(left)[
   #for (title, desc) in data.plan.pairs() [
