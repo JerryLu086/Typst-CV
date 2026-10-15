@@ -45,32 +45,35 @@ portfolio:
       thumbnail: "jei"
       desc: >
         "The hell you mean you made JEI?"
-      curseforge:
-        link: "https://www.curseforge.com/minecraft/mc-mods/jei"
-        downloads: "635,526,396"
-      modrinth:
-        link: "https://modrinth.com/mod/jei"
-        downloads: "83,235,823"
+      sites:
+        - "curseforge":
+            link: "https://www.curseforge.com/minecraft/mc-mods/jei"
+            display: "635,526,396"
+        - "modrinth":
+            link: "https://modrinth.com/mod/jei"
+            display: "83,235,823"
   - "Fabric API":
       thumbnail: "fabricapi"
       desc: >
         "Okay you gotta stop lying, no way you made FAPI too!"
-      curseforge:
-        link: "https://www.curseforge.com/minecraft/mc-mods/fabric-api"
-        downloads: "237,043,240"
-      modrinth:
-        link: "https://modrinth.com/mod/fabric-api"
-        downloads: "278,848,918"
+      sites:
+        - "curseforge":
+            link: "https://www.curseforge.com/minecraft/mc-mods/fabric-api"
+            display: "237,043,240"
+        - "modrinth":
+            link: "https://modrinth.com/mod/fabric-api"
+            display: "278,848,918"
   - "Goofy Mod":
       thumbnail: "goofy"
       desc: >
         "Okay you gotta stop lying, no way you made— oh it does not exist, yeah that's fine then." get rekt lol. (the link does exist on Modrinth though)
-      curseforge:
-        link: "https://www.curseforge.com/minecraft/mc-mods/goofy"
-        downloads: "-1"
-      modrinth:
-        link: "https://modrinth.com/mod/goofy"
-        downloads: "-1"
+      sites:
+        - "curseforge":
+            link: "https://www.curseforge.com/minecraft/mc-mods/goofy"
+            display: "-1"
+        - "modrinth":
+            link: "https://modrinth.com/mod/goofy"
+            display: "-1"
 
 experience:
   "2020-2022": >

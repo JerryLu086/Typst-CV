@@ -1,30 +1,16 @@
 #set text(font: "微軟正黑體")
-
 #let data = yaml("data.yml")
 
 // Stolen link color straight from official Typst wiki.
 #let linkRGB = rgb("#007AFF")
 
-#let button(name, b, t, filled: true) = box(
-  fill: if filled { rgb(b) } else { none },
-  stroke: if filled { none } else { 1.5pt + rgb(b) },
-  radius: 10pt,
-  inset: (x: 10pt, y: 8pt),
-  text(
-    name,
-    weight: "bold",
-    fill: rgb(t),
-    size: 10pt,
-  ),
-)
-
-#let makeTitle(name) = {
+#let makeTitle(title) = {
   text(
     fill: rgb("#1430A0"),
     weight: "bold",
     tracking: 1.5pt,
-    size: 9pt,
-  )[#name]
+    size: 12pt,
+  )[#title]
   v(1.5em)
 }
 
@@ -39,7 +25,7 @@
   #text(size: 30pt, fill: rgb("#1430A0"))[#data.name] \
   #text(size: 15pt, fill: rgb("#7F7F7F"), style: "italic")[#data.dep]
 ]
-#v(0.5em)
+#v(2em)
 
 // Inspired by: https://youtu.be/G47JjN4F_hE
 #align(right)[
@@ -57,7 +43,7 @@
     }).join(" | ")
   ]
 ]
-#v(1.5em)
+#v(2em)
 
 // #makeTitle("HIGHLIGHTS")
 
@@ -72,7 +58,7 @@
         weight: "bold",
         size: 11pt,
         if i < 9 { "0" + str(i + 1) } else { str(i + 1) }
-      )
+      ),
     ),
     box(
       inset: (y: 15pt),
@@ -81,8 +67,8 @@
       text(
         size: 10pt,
         fill: rgb("#1D3557"),
-        desc
-      )
+        desc,
+      ),
     )
   )).flatten()
 )
@@ -104,6 +90,19 @@
 
     let languages = config.at("languages", default: none)
     let tools = config.at("tools", default: none)
+
+    let button(name, b, t, filled: true) = box(
+      fill: if filled { rgb(b) } else { none },
+      stroke: if filled { none } else { 1.5pt + rgb(b) },
+      radius: 10pt,
+      inset: (x: 10pt, y: 8pt),
+      text(
+        name,
+        weight: "bold",
+        fill: rgb(t),
+        size: 10pt,
+      ),
+    )
 
     (
       text(weight: "bold", fill: rgb("#000000"), size: 11pt)[#level],
@@ -135,18 +134,47 @@
         ),
       ),
       box(
-        inset: (y: 15pt),
+        inset: (y: 10pt),
         stroke: (bottom: 0.5pt + rgb("#7F7F7F")),
         width: 100%,
       )[
-        #text(size: 14pt, fill: rgb("#1D3557"))[#title] \
-        #text(size: 10pt, fill: rgb("#7F7F7F"))[
-          #link(config.curseforge.link)[
-            #inlineIcon("assets/curseforge.png", 10pt) #config.curseforge.downloads
-          ]#h(0.2em)|#h(0.2em)#link(config.modrinth.link)[
-            #inlineIcon("assets/modrinth.png", 10pt) #config.modrinth.downloads
-          ]
-        ] \
+        #set par(leading: 0.8em)
+        #text(size: 14pt, fill: rgb("#1D3557"))[#title#h(0.8em)]
+        #let tags = config.at("tags", default: none)
+        #if (tags != none) {
+          tags.map(map => {
+            let (title, color) = map.pairs().first()
+            box(
+              fill: none ,
+              stroke: 1.5pt + rgb(color),
+              radius: 50%,
+              inset: (x: 8pt, y: 5pt),
+              baseline: -0.15em,
+              text(
+                weight: "bold",
+                fill: rgb(color),
+                size: 10pt,
+              )[#title]
+            )
+          }).join(h(10pt)) // RAHHH YOU CULPRIT!!!
+        }
+        #let sites = config.at("sites", default: none)
+        #if (sites != none) {
+          v(-0.5em)
+          sites.map(map => {
+            let (title, config) = map.pairs().first()
+            // So I did try to give a none check for the link but ended up with just this. Like why would you even put a site display when it doesn't have a link?
+            text(size: 10pt, fill: rgb("#7F7F7F"))[
+              #link(config.link)[
+                #inlineIcon("assets/sites/" + title + ".png", 10pt)
+                #underline(stroke: rgb("#7F7F7F"))[
+                  #let display = config.at("display", default: none)
+                  #if display != none { config.display } else { none }
+                ]
+              ]
+            ]
+          }).join(" | ")
+        } \
         #text(size: 12pt, fill: rgb("#1D3557"))[#config.desc]
       ],
     )
