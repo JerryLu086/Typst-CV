@@ -143,7 +143,7 @@
         #text(size: 10pt, fill: rgb("#7F7F7F"))[
           #link(config.curseforge.link)[
             #inlineIcon("assets/curseforge.png", 10pt) #config.curseforge.downloads
-          ] | #link(config.modrinth.link)[
+          ]#h(0.2em)|#h(0.2em)#link(config.modrinth.link)[
             #inlineIcon("assets/modrinth.png", 10pt) #config.modrinth.downloads
           ]
         ] \
