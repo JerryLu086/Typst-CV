@@ -18,21 +18,59 @@ skills:
       colors:
         - "#C1D6F2"
         - "#1D3557"
-      items:
+      languages:
         - "Java"
+      tools:
+        - "Fabric"
+        - "Mixin"
   - "Experienced":
       colors:
         - "#DEE9F4"
         - "#1D3557"
-      items:
+      languages:
         - "JavaScript"
+      tools:
+        - "Gradle"
+        - "Forge/NeoForge"
   - "Familiar":
       colors:
         - "#EFF4FC"
         - "#1D3557"
-      items:
+      languages:
         - "Lua"
         - "C++"
+
+portfolio:
+  - "JEI":
+      thumbnail: "jei"
+      desc: >
+        "The hell you mean you made JEI?"
+      curseforge:
+        link: "https://www.curseforge.com/minecraft/mc-mods/jei"
+        downloads: "635,526,396"
+      modrinth:
+        link: "https://modrinth.com/mod/jei"
+        downloads: "83,235,823"
+  - "Fabric API":
+      thumbnail: "fabricapi"
+      desc: >
+        "Okay you gotta stop lying, no way you made FAPI too!"
+      curseforge:
+        link: "https://www.curseforge.com/minecraft/mc-mods/fabric-api"
+        downloads: "237,043,240"
+      modrinth:
+        link: "https://modrinth.com/mod/fabric-api"
+        downloads: "278,848,918"
+  - "Goofy Mod":
+      thumbnail: "goofy"
+      desc: >
+        "Okay you gotta stop lying, no way you made— oh it does not exist, yeah that's fine then." get rekt lol. (the link does exist on Modrinth though)
+      curseforge:
+        link: "https://www.curseforge.com/minecraft/mc-mods/goofy"
+        downloads: "-1"
+      modrinth:
+        link: "https://modrinth.com/mod/goofy"
+        downloads: "-1"
 
 experience:
   "2020-2022": >

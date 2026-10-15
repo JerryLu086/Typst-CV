@@ -1,13 +1,13 @@
-#set text(font: "Noto Sans CJK TC")
+#set text(font: "微軟正黑體")
 
-#let data = yaml("data-alt.yml")
 #let data = yaml("data.yml")
 
 // Stolen link color straight from official Typst wiki.
 #let linkRGB = rgb("#007AFF")
 
-#let button(name, b, t) = box(
-  fill: rgb(b),
+#let button(name, b, t, filled: true) = box(
+  fill: if filled { rgb(b) } else { none },
+  stroke: if filled { none } else { 1.5pt + rgb(b) },
   radius: 10pt,
   inset: (x: 10pt, y: 8pt),
   text(
@@ -27,6 +27,12 @@
   )[#name]
   v(1.5em)
 }
+
+#let inlineIcon(path, size) = box(
+  baseline: 20%,
+  height: size,
+  image(path, height: 100%)
+)
 
 #align(left)[
   #set par(leading: 1.25em)
@@ -90,14 +96,61 @@
   column-gutter: 20pt,
   align: (col, row) => (left + horizon),
   ..data.skills.map(map => {
+
     let (level, config) = map.pairs().first()
-    let skill = config.items
-    let colors = config.colors
+
+    let colors = config.at("colors", default: ("#AAAAAA", "#000000"))
+    let colorsFallback = if colors != none { colors } else { ("#2D7CAD", "#FFFFFF") }
+
+    let languages = config.at("languages", default: none)
+    let tools = config.at("tools", default: none)
+
     (
       text(weight: "bold", fill: rgb("#000000"), size: 11pt)[#level],
-      skill.map(s => button(s, colors.at(0), colors.at(1))).join(h(10pt)),
+      (
+        (if languages != none { languages.map(s => button(s, colorsFallback.at(0), colorsFallback.at(1))) } else { () })
+        +
+        (if tools != none { tools.map(s => button(s, colorsFallback.at(0), colorsFallback.at(1), filled: false)) } else { () })
+      ).join(h(10pt)),
     )
   }).flatten(),
+)
+#v(1.5em)
+
+#makeTitle("PORTFOLIO")
+
+#grid(
+  columns: (1fr, 9fr),
+  gutter: 10pt,
+  align: horizon,
+  ..data.portfolio.map(map => {
+    let (title, config) = map.pairs().first()
+    let thumbnail = config.at("thumbnail", default: none)
+    (
+      box(
+        radius: 10pt,
+        clip: true,
+        grid.cell(
+          image(if thumbnail != none { "assets/" + thumbnail + ".png" } else { none }, width: 100%),
+        ),
+      ),
+      box(
+        inset: (y: 15pt),
+        stroke: (bottom: 0.5pt + rgb("#7F7F7F")),
+        width: 100%,
+      )[
+        #text(size: 14pt, fill: rgb("#1D3557"))[#title] \
+        #text(size: 10pt, fill: rgb("#7F7F7F"))[
+          #link(config.curseforge.link)[
+            #inlineIcon("assets/curseforge.png", 10pt) #config.curseforge.downloads
+          ] | #link(config.modrinth.link)[
+            #inlineIcon("assets/modrinth.png", 10pt) #config.modrinth.downloads
+          ]
+        ] \
+        #text(size: 12pt, fill: rgb("#1D3557"))[#config.desc]
+      ],
+    )
+  }).flatten()
 )
 #v(1.5em)
 
